@@ -1,0 +1,29 @@
+{
+    "name": "dresing/darkroom",
+    "description": "A package to associate files with eloquent models. In opposition to other solutions, it doesn't utilize",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "intervention/image": "^2.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Andreas Olesen",
+            "email": "ao@copus.dk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dresing\\Darkroom\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dresing\\Darkroom\\DarkroomServiceProvider"
+            ]
+        }
+    }
+}
