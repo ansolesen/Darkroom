@@ -35,6 +35,10 @@ class DarkroomServiceProvider extends ServiceProvider
             __DIR__.'/../config/darkroom.php', 'darkroom'
         );
 
+        $this->publishes([
+            __DIR__.'/../config/darkroom.php' => config_path('darkroom.php'),
+        ]);
+
         $this->app->singleton(FileManager::class, function ($app) {
             $fileManager = config('darkroom.file_manager');
             return new $fileManager();
@@ -43,12 +47,15 @@ class DarkroomServiceProvider extends ServiceProvider
         $this->app->singleton(CreateRequest::class, function ($app) {
             return new CreateRequest(config('darkroom.disk_name'));
         });
+
         $this->app->singleton(GetRequest::class, function ($app) {
             return new GetRequest(config('darkroom.disk_name'));
         });
+
         $this->app->singleton(DeleteRequest::class, function ($app) {
             return new DeleteRequest(config('darkroom.disk_name'));
         });
+
         $this->app->singleton(PathGenerator::class, function ($app) {
             $pathGenerator = config('darkroom.path_generator');
             return new $pathGenerator();
@@ -58,6 +65,5 @@ class DarkroomServiceProvider extends ServiceProvider
             $imageGenerator = config('darkroom.image_generator');
             return new $imageGenerator();
         });
-
     }
 }

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'disk_name' => 'spaces',
+    'disk_name' => 'local',
 
     // Use custom implementations
     'path_generator' => Dresing\Darkroom\PathGenerator\BasePathGenerator::class,
