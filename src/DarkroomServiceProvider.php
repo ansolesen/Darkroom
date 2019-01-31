@@ -2,6 +2,7 @@
 
 namespace Dresing\Darkroom;
 
+use Dresing\Darkroom\Compressors\Compressor;
 use Dresing\Darkroom\FileManager\FileCreator;
 use Dresing\Darkroom\FileManagers\FileManager;
 use Dresing\Darkroom\ImageGenerators\ImageGenerator;
@@ -31,6 +32,7 @@ class DarkroomServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->mergeConfigFrom(
             __DIR__.'/../config/darkroom.php', 'darkroom'
         );
@@ -63,6 +65,11 @@ class DarkroomServiceProvider extends ServiceProvider
 
         $this->app->singleton(ImageGenerator::class, function ($app) {
             $imageGenerator = config('darkroom.image_generator');
+            return new $imageGenerator();
+        });
+
+        $this->app->singleton(Compressor::class, function ($app) {
+            $imageGenerator = config('darkroom.compressor');
             return new $imageGenerator();
         });
     }

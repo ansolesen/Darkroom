@@ -10,6 +10,7 @@ use Dresing\Darkroom\Models\FileFactory;
 use Dresing\Darkroom\Models\UploadFile;
 use Dresing\Darkroom\PathGenerator\PathGenerator;
 use Dresing\Darkroom\Requests\Request;
+use Dresing\Darkroom\Templates\Template;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;

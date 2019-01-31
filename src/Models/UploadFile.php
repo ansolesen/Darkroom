@@ -7,7 +7,9 @@
 namespace Dresing\Darkroom\Models;
 
 use Dresing\Darkroom\Exceptions\CouldNotGuessExtension;
+use Dresing\Darkroom\ImageGenerators\ImageGenerator;
 use Dresing\Darkroom\Models\File;
+use Dresing\Darkroom\Templates\Template;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Image;
 use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;

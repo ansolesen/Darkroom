@@ -2,6 +2,7 @@
 
 namespace Dresing\Darkroom\FileManagers;
 
+use Dresing\Darkroom\Compressors\Compressor;
 use Dresing\Darkroom\FileManagers\FileManager;
 use Dresing\Darkroom\ImageGenerators\ImageGenerator;
 use Dresing\Darkroom\Models\File;
@@ -45,6 +46,11 @@ class BaseFileManager implements FileManager
     public function insertFile(File $file, array $imageMap) : FileManager
     {
         $filePath = $file->getPath();
+
+        $file = app(Compressor::class)->compress($file);
+
+
+
         Storage::disk($this->disk)->put($filePath, $file->content, $file->getVisibility());
 
 
