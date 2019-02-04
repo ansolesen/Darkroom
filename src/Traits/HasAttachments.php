@@ -19,7 +19,7 @@ trait HasAttachments{
 
     public function attachFromRaw($content, string $visibility = '')
     {
-        return app(CreateRequest::class)->setModel($this)->createFromUpload($file, $visibility);
+        return app(CreateRequest::class)->setModel($this)->createFromRaw($content, $visibility);
     }
 
     public function attachFromUrl($url, string $visibility = '')
