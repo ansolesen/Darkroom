@@ -33,14 +33,17 @@ class CreateRequest extends Request
 
     public function createFromUrl($url, string $visibility = '') : self
     {
-        $file_info = new \finfo(FILEINFO_MIME_TYPE);
         $content = file_get_contents($url);
+        return $this->createFromRaw();
+    }
+    public function createFromRaw(string $content, string $visibility = '') : self
+    {
+        $file_info = new \finfo(FILEINFO_MIME_TYPE);
         $mime = $file_info->buffer($content);
         $this->file = FileFactory::createFromRaw($content, $mime);
         $this->visibility = $visibility;
         return $this;
     }
-
     /**
      * Insert the file into a collection.
      * @param  string $collectionName [description]
